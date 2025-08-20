@@ -1,0 +1,291 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 21% 15%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 240 21% 15%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 240 21% 15%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 217 100% 60%;
+    --primary-foreground: 240 21% 15%;
+    --secondary: 240 11% 27%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 240 11% 27%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 11% 27%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 240 11% 27%;
+    --input: 240 11% 27%;
+    --ring: 217 100% 60%;
+    --radius: 0.5rem;
+    
+    /* Custom semantic tokens for futuristic theme */
+    --gradient-primary: linear-gradient(135deg, hsl(217, 100%, 60%) 0%, hsl(271, 100%, 65%) 50%, hsl(193, 100%, 50%) 100%);
+    --shadow-card: 0 10px 40px rgba(79, 70, 229, 0.1);
+    --card-border: rgba(79, 70, 229, 0.2);
+    
+    /* Sidebar specific variables */
+    --sidebar: 240 21% 15%;
+    --sidebar-foreground: 60 9.1% 97.8%;
+    --sidebar-border: 240 11% 27%;
+    --sidebar-accent: 240 11% 27%;
+    --sidebar-accent-foreground: 60 9.1% 97.8%;
+  }
+
+  .dark {
+    --background: 240 27% 9%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 240 21% 15%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 240 21% 15%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 217 100% 60%;
+    --primary-foreground: 240 21% 15%;
+    --secondary: 240 11% 27%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 240 11% 27%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 11% 27%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 240 11% 27%;
+    --input: 240 11% 27%;
+    --ring: 217 100% 60%;
+    
+    /* Sidebar specific variables for dark mode */
+    --sidebar: 240 21% 15%;
+    --sidebar-foreground: 60 9.1% 97.8%;
+    --sidebar-border: 240 11% 27%;
+    --sidebar-accent: 240 11% 27%;
+    --sidebar-accent-foreground: 60 9.1% 97.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .border-card-border {
+    border-color: var(--card-border);
+  }
+  
+  .font-heading {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+  }
+
+  /* Futuristic glassmorphism effects */
+  .glass-card {
+    backdrop-filter: blur(10px);
+    background: rgba(79, 70, 229, 0.1);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(79, 70, 229, 0.8);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(240, 21%, 15%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(217, 100%, 60%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(217, 100%, 70%);
+  }
+
+  /* Futuristic animations */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px rgba(79, 70, 229, 0.1);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(79, 70, 229, 0.3);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/* Particle animation for background */
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particle 15s linear infinite;
+}
+
+.particle:nth-child(odd) {
+  animation-delay: -5s;
+}
+
+.particle:nth-child(even) {
+  animation-delay: -10s;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.2);
+}
+
+/* Futuristic button animations */
+.btn-futuristic {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, hsl(217, 100%, 60%) 0%, hsl(271, 100%, 65%) 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-futuristic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-futuristic:hover::before {
+  left: 100%;
+}
+
+/* Magnetic field lines animation */
+@keyframes magnetic-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.magnetic-line {
+  animation: magnetic-pulse 3s ease-in-out infinite;
+}
+
+/* Loading shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.1), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Enhanced text wrapping and overflow handling */
+.word-wrap-anywhere {
+  word-wrap: anywhere;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Chatbot specific utilities */
+.chatbot-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.chatbot-container {
+  contain: layout;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* Ensure buttons don't overflow */
+.chatbot-button {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+/* Card content wrapping */
+.chatbot-card {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Text truncation utilities */
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
